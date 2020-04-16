@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">NbaApp</string>
+    <string name="error_message">An error while downloading data</string>
+</resources>
