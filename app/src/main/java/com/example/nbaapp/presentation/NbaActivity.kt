@@ -36,7 +36,7 @@ class NbaActivity : AppCompatActivity() {
         loadData()
 
         nbaViewModel.playersResult().observe(this,
-            Observer<List<Player>>{
+            Observer {
                 if(it!=null){
                     recycler.adapter = nbaAdapter
                     recycler.layoutManager = LinearLayoutManager(this)

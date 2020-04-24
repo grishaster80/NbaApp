@@ -23,7 +23,6 @@ class AppModule(val app: Application) {
     @Singleton
     fun provideNbaDatabase(app: Application): Database = Room.databaseBuilder(app,
             Database::class.java, Constants.DATABASE_NAME)
-        /*.addMigrations(MIGRATION_1_2)*/
         .fallbackToDestructiveMigration()
         .build()
 

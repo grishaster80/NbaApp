@@ -9,9 +9,11 @@ import io.reactivex.Single
 import java.util.*
 import javax.inject.Inject
 
-class NbaRepository @Inject constructor(val apiInterface: ApiInterface,
-    val nbaDao: NbaDao, val utils: Utils
+class NbaRepository @Inject constructor(private val apiInterface: ApiInterface,
+    private val nbaDao: NbaDao, val utils: Utils
 ) {
+
+
 
     fun getNbaPlayers():Observable<List<Player>>{
         val hasConnection = utils.isConnectedToInternet()
@@ -27,20 +29,18 @@ class NbaRepository @Inject constructor(val apiInterface: ApiInterface,
 
     }
 
-    fun getPlayersFromApi(): Observable<List<Player>> {
+    private fun getPlayersFromApi(): Observable<List<Player>> {
         return apiInterface.getPlayers()
             .flatMapObservable {
                 return@flatMapObservable Observable.fromArray(it.players)
             }
             .doOnNext {
-                for(player:Player in it){
-                    nbaDao.insertPlayer(player)
-                }
+                nbaDao.insertAllPlayers(it)
             }
     }
 
 
-    fun getPlayersFromDb():Observable<List<Player>>{
+    private fun getPlayersFromDb():Observable<List<Player>>{
         return nbaDao.loadAllPlayers()
             .toObservable()
     }

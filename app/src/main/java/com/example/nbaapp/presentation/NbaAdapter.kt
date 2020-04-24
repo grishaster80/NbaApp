@@ -21,7 +21,7 @@ class NbaAdapter(players: List<Player>?) : RecyclerView.Adapter<NbaViewHolder>()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NbaViewHolder {
-        val layoutInflater = LayoutInflater.from(parent?.context)
+        val layoutInflater = LayoutInflater.from(parent.context)
         val playerBinding = PlayerCardBinding.inflate(layoutInflater, parent, false)
         return NbaViewHolder(playerBinding)
     }
@@ -41,27 +41,12 @@ class NbaAdapter(players: List<Player>?) : RecyclerView.Adapter<NbaViewHolder>()
         notifyItemRangeInserted(initPosition, playersList.size)
     }
 
-    class NbaViewHolder constructor(val binding: PlayerCardBinding): RecyclerView.ViewHolder(binding.root) {
+    class NbaViewHolder constructor(private val binding: PlayerCardBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(player:Player){
             binding.player = player
             binding.executePendingBindings()
         }
-
-
-
-
-
-
-//        var playerFirstName = itemView.findViewById<TextView>(R.id.first_name)
-//        var playerLastName = itemView.findViewById<TextView>(R.id.last_name)
-//        var playerPosition = itemView.findViewById<TextView>(R.id.position)
-//
-//        fun playerListItem(playerItem:Player){
-//            playerFirstName.text=playerItem.firstName.toString()
-//            playerLastName.text=playerItem.lastName.toString()
-//            playerPosition.text=playerItem.position.toString()
-//        }
     }
 }
 
