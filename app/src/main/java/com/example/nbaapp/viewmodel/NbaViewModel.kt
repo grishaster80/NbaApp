@@ -49,7 +49,6 @@ class NbaViewModel @Inject constructor(
         nbaRepository.getNbaPlayers()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .debounce(400, TimeUnit.MILLISECONDS)
             .subscribe(disposableObserver)
 
     }
