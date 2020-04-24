@@ -21,7 +21,7 @@ class AppModule(val app: Application) {
 
     @Provides
     @Singleton
-    fun provideCryptocurrenciesDatabase(app: Application): Database = Room.databaseBuilder(app,
+    fun provideNbaDatabase(app: Application): Database = Room.databaseBuilder(app,
             Database::class.java, Constants.DATABASE_NAME)
         /*.addMigrations(MIGRATION_1_2)*/
         .fallbackToDestructiveMigration()
@@ -34,7 +34,7 @@ class AppModule(val app: Application) {
 
     @Provides
     @Singleton
-    fun provideCryptocurrenciesViewModelFactory(
+    fun provideNbaViewModelFactory(
         factory: NbaViewModelFactory
     ): ViewModelProvider.Factory = factory
 
