@@ -7,7 +7,7 @@ import com.example.nbaapp.data.source.local.Database
 import com.example.nbaapp.data.source.local.NbaDao
 import com.example.nbaapp.utils.Constants
 import com.example.nbaapp.utils.Utils
-import com.example.nbaapp.viewmodel.NbaViewModelFactory
+import com.example.nbaapp.presentation.nba.NbaViewModelFactory
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

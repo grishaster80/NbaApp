@@ -1,11 +1,12 @@
-package com.example.nbaapp.viewmodel
+package com.example.nbaapp.presentation.nba
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import javax.inject.Inject
 
 class NbaViewModelFactory @Inject constructor(
-    private val nbaViewModel: NbaViewModel):ViewModelProvider.Factory{
+    private val nbaViewModel: NbaViewModel
+):ViewModelProvider.Factory{
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

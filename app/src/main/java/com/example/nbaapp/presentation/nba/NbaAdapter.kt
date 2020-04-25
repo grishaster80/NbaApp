@@ -1,24 +1,16 @@
-package com.example.nbaapp.presentation
+package com.example.nbaapp.presentation.nba
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nbaapp.R
 import com.example.nbaapp.data.model.Player
 import com.example.nbaapp.databinding.PlayerCardBinding
-import com.example.nbaapp.presentation.NbaAdapter.NbaViewHolder
-import kotlinx.android.synthetic.main.player_card.view.*
+import com.example.nbaapp.presentation.nba.NbaAdapter.NbaViewHolder
 import java.util.ArrayList
 
-class NbaAdapter(players: List<Player>?) : RecyclerView.Adapter<NbaViewHolder>()  {
+class NbaAdapter : RecyclerView.Adapter<NbaViewHolder>()  {
 
     private var playersList = ArrayList<Player>()
-
-    init {
-        this.playersList = players as ArrayList<Player>
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NbaViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

@@ -1,6 +1,6 @@
 package com.example.nbaapp.di.modules
 
-import com.example.nbaapp.presentation.NbaActivity
+import com.example.nbaapp.presentation.nba.NbaActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -8,5 +8,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class BuildersModule {
 
     @ContributesAndroidInjector
-    abstract fun contributeNbaActivity():NbaActivity
+    abstract fun contributeNbaActivity(): NbaActivity
 }
