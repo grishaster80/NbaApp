@@ -4,6 +4,7 @@ import com.example.nbaapp.NbaApplication
 import com.example.nbaapp.di.modules.AppModule
 import com.example.nbaapp.di.modules.BuildersModule
 import com.example.nbaapp.di.modules.NetModule
+import com.example.nbaapp.presentation.nba.NbaFragment
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton

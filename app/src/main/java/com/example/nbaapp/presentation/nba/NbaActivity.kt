@@ -15,7 +15,7 @@ import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.nba_players.*
 import javax.inject.Inject
 
-class NbaActivity : DaggerAppCompatActivity() {
+class NbaActivity : AppCompatActivity() {
     @Inject
     lateinit var nbaViewModelFactory: NbaViewModelFactory
     var nbaAdapter = NbaAdapter()

@@ -16,11 +16,17 @@ import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.nba_players.*
 import javax.inject.Inject
 import androidx.lifecycle.Observer
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
 
-class NbaFragment : Fragment() {
+class NbaFragment : Fragment(), HasAndroidInjector {
 
     @Inject
     lateinit var nbaViewModelFactory: NbaViewModelFactory
+
+    @Inject
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
     var nbaAdapter = NbaAdapter()
     lateinit var nbaViewModel: NbaViewModel
 
@@ -31,7 +37,12 @@ class NbaFragment : Fragment() {
 
         nbaViewModel = ViewModelProvider(this,nbaViewModelFactory)
             .get(NbaViewModel::class.java)
+        super.onAttach(context)
 
+    }
+
+    override fun onStart() {
+        super.onStart()
         progressBar.visibility = View.VISIBLE
         loadData()
 
@@ -54,9 +65,6 @@ class NbaFragment : Fragment() {
         nbaViewModel.playersLoader().observe(this, Observer<Boolean> {
             if (it == false) progressBar.visibility = View.GONE
         })
-
-        super.onAttach(context)
-
     }
 
     override fun onCreateView(
@@ -86,4 +94,6 @@ class NbaFragment : Fragment() {
         nbaViewModel.disposeElements()
         super.onDestroy()
     }
+
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 }
